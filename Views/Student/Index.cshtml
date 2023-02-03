@@ -1,0 +1,52 @@
+﻿@model IEnumerable<NigerianLawSchoolStudentApp.DTO.StudentViewModel>
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	var count = Model?.ToList().Count() ?? 0;
+}
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+	<div class="panel-heading panel-head"> Student Management Portal</div>
+	<br />
+	<div class="panel-body">
+		<div class="btn-group">
+			<a type="button" class="btn btn-primary mr-2 p-2" asp-action="AddEditStudent"> Add Student</a>
+			
+			<button class="btn btn-info">Total Students: @count</button>
+		</div>
+
+		<div class="top-buffer"></div>
+		<br />
+		<table class="table table-bordered table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Sex</th>
+					<th>Enrollment No</th>
+					<th>Graduation Year</th>
+					<th>Previous Sch</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</td>
+						<td>@Html.DisplayFor(modelItem => item.Sex)</td>
+						<td>@Html.DisplayFor(modelItem => item.EnrollmentNo)</td>
+						<td>@Html.DisplayFor(modelItem => item.Year)</td>
+						<td>@Html.DisplayFor(modelItem => item.SchoolAttended)</td>
+						
+						<td>
+							<a type="button" class="btn btn-primary" asp-action="AddEditStudent" asp-route-id="@item.Id"> Edit </a>
+							<a type="button" class="btn btn-info" asp-action="StudentDetail" asp-route-id="@item.Id"> View Profile </a>
+						</td>
+					</tr>
+
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

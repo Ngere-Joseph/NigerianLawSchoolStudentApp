@@ -1,0 +1,62 @@
+﻿@model NigerianLawSchoolStudentApp.DTO.StudentViewModel
+
+@{
+	ViewData["Title"] = @Model.Id == 0 ? "Create" : "Edit";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddEditStudent", "Student"))
+{
+	<div class="">
+
+		@if (@Model.Id == 0)
+		{
+			<h4 class="modal-title">Add Student</h4>
+		}
+		else
+		{
+			<h4 class="modal-title">Edit Student</h4>
+		}
+
+	</div>
+
+	<div class="form-horizontal">
+		<div class="form-group">
+			<label asp-for="FirstName" class="col-lg-3 col-sm-3 control-label"></label>
+			<div class="col-lg-6">
+				<input asp-for="FirstName" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="LastName" class="col-lg-3 col-sm-3 control-label"></label>
+			<div class="col-lg-6">
+				<input asp-for="LastName" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label asp-for="GradYear" class="col-lg-3 col-sm-3 control-label"></label>
+				<div class="col-lg-6">
+					<input asp-for="GradYear" class="form-control" type="date" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="SchoolAttended" class="col-lg-3 col-sm-3 control-label"></label>
+				<div class="col-lg-6">
+					<input asp-for="SchoolAttended" class="form-control" />
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="Sex" class="col-lg-3 col-sm-3 control-label"></label>
+			<div class="col-lg-6">
+				<input asp-for="Sex" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="EnrollmentNo" class="col-lg-3 col-sm-3 control-label"></label>
+			<div class="col-lg-6">
+				<input asp-for="EnrollmentNo" class="form-control" />
+			</div>
+		</div>
+	</div>
+	<button id="btnSubmit" class="btn btn-success" type="submit" value="Submit" name="Action">Save Student</button>
+}
